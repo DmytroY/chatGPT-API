@@ -14,8 +14,8 @@ GREEN = '\033[92m'
 RESET = '\033[0m'
 
 openai.api_key = OPENAI_API_KEY
-# messages = [ {"role": "system", "content": "You are a intelligent assistant."} ]
-messages = [ {"role": "system", "content": "You are a intelligent assistant speak Ukrainian"} ]
+
+messages = [ {"role": "system", "content": "You are a intelligent assistant and you speak Ukrainian"} ]
 
 while True:
     # message = input("User: ")
