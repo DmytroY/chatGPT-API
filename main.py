@@ -7,10 +7,15 @@ from stt import recognize_speech
 from tts import text_to_speech
 
 
-# RED = '\033[91m'
-# YELLOW = '\033[93m'
-
+PURPLE = '\033[95m'
+CYAN = '\033[96m'
+DARKCYAN = '\033[36m'
+BLUE = '\033[94m'
 GREEN = '\033[92m'
+YELLOW = '\033[93m'
+RED = '\033[91m'
+BOLD = '\033[1m'
+UNDERLINE = '\033[4m'
 RESET = '\033[0m'
 
 openai.api_key = OPENAI_API_KEY
@@ -23,7 +28,7 @@ while True:
     message = ''
     while message == '':
         message = recognize_speech()
-    print("User: " + message)
+    print(BLUE + f"User: {message}" + RESET)
 
     if message == "quit" or message == "exit" or message == "вийти" or message == "вихід" or message == "годі" or message == "геть":
         sys.exit()
