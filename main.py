@@ -23,24 +23,25 @@ openai.api_key = OPENAI_API_KEY
 messages = [ {"role": "system", "content": "You are a intelligent assistant and you speak Ukrainian"} ]
 
 while True:
-    # message = input("User: ")
-    # розпізнавання усного запитання
+    # verbal query recognition
     message = ''
     while message == '':
         message = recognize_speech()
     print(BLUE + f"User: {message}" + RESET)
-
+    
+    # stop-words
     if message == "quit" or message == "exit" or message == "вийти" or message == "вихід" or message == "годі" or message == "геть":
         sys.exit()
-
+        
+    # Main user query
     if message:
         messages.append(
-            {"role": "user", "content": message +  "? Обмеж довжину своєї відпові до 10 слів."},
+            {"role": "user", "content": message +  "? Limit your answer up to 20 words."},
         )
         chat = openai.ChatCompletion.create(
             model="gpt-3.5-turbo", messages=messages
         )
-
+    # print our reply and say it loudly
     reply = chat.choices[0].message.content
     print(GREEN + f"ChatGPT: {reply}" + RESET)
     print()
